@@ -130,17 +130,17 @@ system.cpu = RiscvO3CPU()
 system.cpu.numROBEntries = 320  # Customize the ROB size here
 system.cpu.fuPool = CustomFUPool()
 
-# # --- Local 2-bit branch predictor ---------------------------------
-# bp = LocalBP()          # class defined in src/cpu/pred/BranchPredictor.py
-# bp.localCtrBits        = 2        # 2-bit saturating counters
-# bp.localPredictorSize  = 1024     # #entries (any power-of-two is fine)
+# --- Local 2-bit branch predictor ---------------------------------
+bp = LocalBP()          # class defined in src/cpu/pred/BranchPredictor.py
+bp.localCtrBits        = 2        # 2-bit saturating counters
+bp.localPredictorSize  = 1024     # #entries (any power-of-two is fine)
 
-# bi mode branch predictor
-bp = BiModeBP()
-bp.globalPredictorSize  = 1024   # taken & not-taken tables
-bp.globalCtrBits        = 2      # bits / counter
-bp.choicePredictorSize  = 1024   # choice table (same size as above)
-bp.choiceCtrBits        = 2
+# # bi mode branch predictor
+# bp = BiModeBP()
+# bp.globalPredictorSize  = 1024   # taken & not-taken tables
+# bp.globalCtrBits        = 2      # bits / counter
+# bp.choicePredictorSize  = 1024   # choice table (same size as above)
+# bp.choiceCtrBits        = 2
 
 
 system.cpu.branchPred = bp
